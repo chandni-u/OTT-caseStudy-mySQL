@@ -67,25 +67,25 @@ from Movie_Data;
 
 -- 2. PLATFORM WISE EXCLUSIVE CONTENT
 -- FOR MOVIES
-with cte1 as(select count(*) as Netflix_count -- movies only reliesed on Netflix
+with cte1 as(select count(*) as Netflix_count -- movies only released on Netflix
 from Movie_Data
 where Netflix=1 and 
 title not in(select title
 from Movie_Data
 where Prime_video=1 or Disney=1 or Hulu=1)),
-cte2 as(select count(*) as prime_count -- movies only reliesed on Prime
+cte2 as(select count(*) as prime_count -- movies only released on Prime
 from Movie_Data
 where Prime_video=1  and 
 title not in(select title
 from Movie_Data
-where Netflix=1 or Disney=1 or Hulu=1)),-- movies only reliesed on Disney+
+where Netflix=1 or Disney=1 or Hulu=1)),-- movies only released on Disney+
 cte3 as(select count(*) as Disney_count
 from Movie_Data
 where Disney=1  and 
 title not in(select title
 from Movie_Data
 where Netflix=1 or Prime_video=1 or Hulu=1)),
-cte4 as(select count(*) as Hulu_count -- Movies only reliesed on hulu
+cte4 as(select count(*) as Hulu_count -- Movies only released on hulu
 from Movie_Data
 where Hulu=1  and 
 title not in(select title
@@ -94,25 +94,25 @@ where Netflix=1 or Prime_video=1 or Disney=1))
 select * from cte1 join cte2 join cte3 join cte4;
 
 -- FOR TV shows
-with cte1 as(select count(*) as Netflix_count -- movies only reliesed on Netflix
+with cte1 as(select count(*) as Netflix_count -- movies only released on Netflix
 from TVShow_Data
 where Netflix=1 and 
 title not in(select title
 from TVShow_Data
 where Prime_video=1 or Disney=1 or Hulu=1)),
-cte2 as(select count(*) as prime_count -- movies only reliesed on Prime
+cte2 as(select count(*) as prime_count -- movies only released on Prime
 from TVShow_Data
 where Prime_video=1  and 
 title not in(select title
 from TVShow_Data
-where Netflix=1 or Disney=1 or Hulu=1)),-- movies only reliesed on Disney+
+where Netflix=1 or Disney=1 or Hulu=1)),-- movies only released on Disney+
 cte3 as(select count(*) as Disney_count
 from TVShow_Data
 where Disney=1  and 
 title not in(select title
 from TVShow_Data
 where Netflix=1 or Prime_video=1 or Hulu=1)),
-cte4 as(select count(*) as Hulu_count -- Movies only reliesed on hulu
+cte4 as(select count(*) as Hulu_count -- Movies only released on hulu
 from TVShow_Data
 where Hulu=1  and 
 title not in(select title
